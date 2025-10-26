@@ -2645,14 +2645,14 @@ namespace BTX_CAC_CompatibilityDll
                 ComponentOrder o = Order(m);
                 c.AddOrder(o, id);
                 string icname = $"itemcollection_{data.AmmoID}";
-                string itemcol = $"{icname},,,\r\n{data.Description.Id},AmmunitionBox,{ItemColAmount},10\r\n";
+                string itemcol = $"{icname},,,\r\n{data.Description.Id},AmmunitionBox,{ItemColAmount},100\r\n";
                 if (Half)
                 {
                     string nid = id + "_Half";
                     string b = MakeBox(data, nid, "(Half)", 0.5f, 1, 0.5f);
                     WriteTo(targetFolder, nid, b);
                     c.AddOrder(o, nid);
-                    itemcol += $"{nid},AmmunitionBox,{ItemColAmount},10\r\n";
+                    itemcol += $"{nid},AmmunitionBox,{ItemColAmount},30\r\n";
                 }
                 if (Double)
                 {
@@ -2660,7 +2660,7 @@ namespace BTX_CAC_CompatibilityDll
                     string b = MakeBox(data, nid, "(Double)", 2, 2, 2.5f);
                     WriteTo(targetFolder, nid, b);
                     c.AddOrder(o, nid);
-                    itemcol += $"{nid},AmmunitionBox,{ItemColAmount},10\r\n";
+                    itemcol += $"{nid},AmmunitionBox,{ItemColAmount},15\r\n";
                 }
                 if (Triple)
                 {
@@ -2668,7 +2668,7 @@ namespace BTX_CAC_CompatibilityDll
                     string b = MakeBox(data, nid, "(Triple)", 3, 3, 4f);
                     WriteTo(targetFolder, nid, b);
                     c.AddOrder(o, nid);
-                    itemcol += $"{nid},AmmunitionBox,{ItemColAmount},10\r\n";
+                    itemcol += $"{nid},AmmunitionBox,{ItemColAmount},5\r\n";
                 }
                 if (ItemColAmount > 0)
                 {
@@ -2676,7 +2676,7 @@ namespace BTX_CAC_CompatibilityDll
                     File.WriteAllText(Path.ChangeExtension(Path.Combine(icfol, icname), "csv"), itemcol);
                     c.ICReplace[id] = new ItemCollectionReplace()
                     {
-                        Amount = 0,
+                        Amount = 1,
                         Type = "Reference",
                         ID = icname,
                     };
@@ -2694,6 +2694,8 @@ namespace BTX_CAC_CompatibilityDll
                 else
                     newcap = (int)capmul * newcap;
 
+                int newCost = Mathf.RoundToInt(int.Parse(json["Description"]["Cost"].ToString()) * capmul);
+                json["Description"]["Cost"] = newCost;
                 json["Description"]["Id"] = id;
                 string newname = $"{data.Description.UIName} {nameadd}";
                 json["Description"]["UIName"] = newname;
