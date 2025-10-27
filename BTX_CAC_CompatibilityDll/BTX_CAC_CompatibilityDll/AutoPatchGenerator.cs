@@ -2350,6 +2350,8 @@ namespace BTX_CAC_CompatibilityDll
                 int size = data.ShotsWhenFired;
                 string p = WeaponForwardingPattern.Forward(data, true, false, true, false, true, Desc);
                 p += $",\r\n\t\"ImprovedBallistic\": true,\r\n\t\"MissileVolleySize\": {size},\r\n\t\"MissileFiringIntervalMultiplier\": 1,\r\n\t\"MissileVolleyIntervalMultiplier\": 1,\r\n\t\"FireDelayMultiplier\": 1,\r\n\t\"HitGenerator\": \"{(Streak ? "Streak" : "Individual")}\",\r\n\t\"AMSHitChance\": 0.0,\r\n\t\"MissileHealth\": 2,\r\n";
+                if (id == "Weapon_SRM_SRM4_0-INV") { p = p.Replace(",\r\n\t\"Description\": {", $",\r\n\t\"Description\": {{\r\n\t\t\"UIName\": \"SRM4\",\r\n\t\t\"Name\": \"SRM4\",\r\n"); }
+                if (id == "Weapon_SRM_SRM4_OneShot") { p = p.Replace("\r\n\t}", $"\r\n\t}},\r\n\t\"PrefabIdentifier\": \"srm4\""); }
                 if (Streak)
                 {
                     p += "\t\"RestrictedAmmo\": [\r\n\t\t\"Ammunition_SRMInferno\",\r\n\t\t\"Ammunition_SRM_DF\"\r\n\t],\r\n";
