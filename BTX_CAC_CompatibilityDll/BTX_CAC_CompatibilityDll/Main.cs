@@ -32,7 +32,7 @@ using static Extended_CE.BTComponents;
 
 namespace BTX_CAC_CompatibilityDll
 {
-    class Main
+    public class Main
     {
         public static Settings Sett = new Settings();
         public static ILog Log;
@@ -401,7 +401,7 @@ namespace BTX_CAC_CompatibilityDll
             cm.ThrowIfInvalid("failed to find if statement");
 
             cm.Advance(1).InsertAndAdvance(new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(RandomPatches), nameof(MechNullIfVehicle))));
-            
+
             return cm.InstructionEnumeration();
         }
 

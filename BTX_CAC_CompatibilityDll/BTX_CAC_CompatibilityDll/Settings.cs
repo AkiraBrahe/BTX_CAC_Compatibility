@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BTX_CAC_CompatibilityDll
 {
-    class Settings
+    public class Settings
     {
         public bool LogLevelLog = true;
         public bool Use4LimitOnAllStoryMissions = false;
@@ -18,14 +18,14 @@ namespace BTX_CAC_CompatibilityDll
         public int MaxNumberOfPlayerUnitsOverride = 12;
     }
 
-    class ItemCollectionReplace
+    public class ItemCollectionReplace
     {
         public string ID = null;
         public string Type = null;
         public int Amount = -1;
     }
 
-    class WeaponAddonSplit
+    public class WeaponAddonSplit
     {
         public string WeaponId = null;
         public string AddonId = null;
