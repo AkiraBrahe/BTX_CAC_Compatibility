@@ -89,7 +89,7 @@
 			"effectType": "VFXEffect",
 			"Description": {
 				"Id": "StatusEffect-NARC-IndicatorVFX",
-				"Name": "Inferno VFX",
+				"Name": "Narc VFX",
 				"Details": "Visual indicator of the NARC effect",
 				"Icon": "uixSvgIcon_statusMarked"
 			},
